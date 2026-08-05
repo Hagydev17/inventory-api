@@ -44,13 +44,13 @@ src
 Once the application is running, Swagger UI is available at:
 
 ```
-http://localhost:8080/swagger-ui/index.html
+http://localhost:8081/swagger-ui/index.html
 ```
 
 The OpenAPI specification is available at:
 
 ```
-http://localhost:8080/v3/api-docs
+http://localhost:8081/v3/api-docs
 ```
 
 ## Getting Started
