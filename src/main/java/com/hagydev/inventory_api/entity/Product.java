@@ -18,7 +18,7 @@ public class Product {
     private String name;
     @Positive(message = "El precio debe ser positivo")
     private BigDecimal price;
-    @Min(value = 0, message = "La cantidad debe ser mayor a 0")
+    @Min(value = 0, message = "La cantidad debe ser igual ó mayor a 0")
     private Integer quantity;
     @NotNull(message = "Es estado es obligatorio")
     private Boolean isActive;
