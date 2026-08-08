@@ -3,8 +3,7 @@ package com.hagydev.inventory_api.controller;
 import com.hagydev.inventory_api.entity.Product;
 import com.hagydev.inventory_api.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -41,13 +40,13 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> save(@RequestBody Product product) {
+    public ResponseEntity<Product> save(@Valid @RequestBody Product product) {
         Product productSaved = productService.save(product);
         return ResponseEntity.ok(productSaved);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product) {
+    public ResponseEntity<Product> update(@Valid @PathVariable Long id, @RequestBody Product product) {
         Product productUpdated = productService.update(id, product);
         return ResponseEntity.ok(productUpdated);
 

@@ -1,6 +1,10 @@
 package com.hagydev.inventory_api.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
@@ -10,11 +14,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Nombre obligatorio")
     private String name;
+    @Positive(message = "El precio debe ser positivo")
     private BigDecimal price;
-
+    @Min(value = 0, message = "La cantidad debe ser mayor a 0")
     private Integer quantity;
-    private Boolean status;
+    @NotNull(message = "Es estado es obligatorio")
+    private Boolean isActive;
 
     public Product() {}
 
@@ -23,7 +30,7 @@ public class Product {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        this.status = status;
+        this.isActive = status;
     }
 
     public Long getId() {
@@ -59,10 +66,10 @@ public class Product {
     }
 
     public Boolean getStatus() {
-        return status;
+        return isActive;
     }
 
     public void setStatus(Boolean status) {
-        this.status = status;
+        this.isActive = status;
     }
 }
