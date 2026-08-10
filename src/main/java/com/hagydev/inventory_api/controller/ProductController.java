@@ -1,6 +1,7 @@
 package com.hagydev.inventory_api.controller;
 
-import com.hagydev.inventory_api.entity.Product;
+import com.hagydev.inventory_api.dto.ProductRequest;
+import com.hagydev.inventory_api.dto.ProductResponse;
 import com.hagydev.inventory_api.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -27,27 +28,28 @@ public class ProductController {
             summary = "Obtener todos los productos",
             description = "Devuelve una lista con todos los productos registrados."
     )
+
     @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
-        List<Product> products = productService.findAll();
+    public ResponseEntity<List<ProductResponse>> findAll() {
+        List<ProductResponse> products = productService.findAll();
         return ResponseEntity.ok(products);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id) {
-        Product product = productService.findById(id);
+    public ResponseEntity<ProductResponse> findById(@PathVariable Long id) {
+        ProductResponse product = productService.findById(id);
         return ResponseEntity.ok(product);
     }
 
     @PostMapping
-    public ResponseEntity<Product> save(@Valid @RequestBody Product product) {
-        Product productSaved = productService.save(product);
+    public ResponseEntity<ProductResponse> save(@Valid @RequestBody ProductRequest request) {
+        ProductResponse productSaved = productService.save(request);
         return ResponseEntity.ok(productSaved);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@Valid @PathVariable Long id, @RequestBody Product product) {
-        Product productUpdated = productService.update(id, product);
+    public ResponseEntity<ProductResponse> update(@PathVariable Long id, @Valid @RequestBody ProductRequest request) {
+        ProductResponse productUpdated = productService.update(id, request);
         return ResponseEntity.ok(productUpdated);
 
     }
