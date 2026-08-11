@@ -2,17 +2,20 @@
 
 A RESTful API for inventory management built with Java and Spring Boot. This project demonstrates best practices for backend development using a layered architecture, Spring Data JPA, and OpenAPI documentation.
 
-> **Project Status:** 🚧 In Development
+> **Project Status:** ✅ Completed — Continuous Improvements
 
 ## Features
 
 * RESTful CRUD operations for products
 * Layered architecture (Controller, Service, Repository)
+* DTO pattern with Request/Response objects
+* Entity/DTO mapping with a dedicated Mapper layer
+* Input validation with Jakarta Bean Validation
+* Custom exception handling
+* `ResponseEntity` for HTTP responses
 * Spring Data JPA with Hibernate
-* Global exception handling
-* Custom exceptions
-* ResponseEntity for HTTP responses
 * OpenAPI / Swagger documentation
+* Lombok for boilerplate reduction
 
 ## Tech Stack
 
@@ -21,37 +24,48 @@ A RESTful API for inventory management built with Java and Spring Boot. This pro
 * Spring Data JPA
 * Hibernate
 * H2 Database
+* Jakarta Bean Validation
+* Lombok
 * Maven
 * OpenAPI (Swagger)
 
 ## Project Structure
 
 ```text
-src
-└── main
-    ├── java
-    │   ├── controller
-    │   ├── service
-    │   ├── repository
-    │   ├── entity
-    │   ├── exception
-    │   └── advice
-    └── resources
+inventory-api
+├── src/main/java
+│   └── com/hagydev/inventory_api
+│       ├── config
+│       ├── controller
+│       ├── dto
+│       ├── entity
+│       ├── exception
+│       ├── mapper
+│       ├── repository
+│       └── service
+│
+├── src/main/resources
+│   └── application.yml
+│
+├── pom.xml
+└── README.md
 ```
+
+## Database
+
+The project currently uses H2 as an in-memory database for development and testing.
+
+PostgreSQL integration is planned for a future iteration.
 
 ## API Documentation
 
 Once the application is running, Swagger UI is available at:
 
-```
-http://localhost:8081/swagger-ui/index.html
-```
+[Swagger UI](http://localhost:8081/swagger-ui/index.html)
 
 The OpenAPI specification is available at:
 
-```
-http://localhost:8081/v3/api-docs
-```
+[OpenAPI Specification](http://localhost:8081/v3/api-docs)
 
 ## Getting Started
 
@@ -73,21 +87,17 @@ Or run the application directly from your IDE.
 
 The following features are planned:
 
-* Bean Validation
-* DTO pattern
-* Model Mapper
-* PostgreSQL
-* Spring Security
-* JWT Authentication
-* Unit Testing
-* Integration Testing
-* Docker
-* Docker Compose
-* CI/CD
+* Unit testing with JUnit and Mockito
+* Integration testing
+* PostgreSQL integration
+* Environment-based configuration
+* Docker and Docker Compose
+* Spring Security and JWT authentication
+* CI/CD pipeline
 * Deployment
 
 ## Author
 
 **Hagy Hernández**
 
-GitHub: https://github.com/Hagydev17
+GitHub: [Hagydev17](https://github.com/Hagydev17)
